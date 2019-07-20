@@ -25,9 +25,6 @@ class Products extends Component {
                     </table>
                 </div>
             </div>
-
-
-
         );
     }
 
