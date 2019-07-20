@@ -36,7 +36,7 @@ const MenuLink = ({ lable, to, activeOnlyWhenExact }) => {
 class Menu extends Component {
     render() {
         return (
-
+            
             <nav className="navbar navbar-inverse">
                 <a className="navbar-brand">Call Api</a>
                 <ul className="nav navbar-nav">

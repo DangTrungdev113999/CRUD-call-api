@@ -6,7 +6,7 @@ class Products extends Component {
         const statusName = product.status ? 'stocking' : 'Out of stock';
         const statusClass = product.status ? 'success' : 'danger';
         return (
-            <tr>
+            <tr className="text-center">
                 <td>{index + 1}</td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
@@ -17,7 +17,7 @@ class Products extends Component {
                 </td>
                 <td>
                     <button type="button" className="btn btn-warning">Update</button>
-                    <button type="button" className="btn btn-danger">Delete</button>
+                    <button type="button" className="btn btn-danger ml-15">Delete</button>
                 </td>
             </tr>
         );
