@@ -1,22 +1,40 @@
 {
-    "products" : [
-        {
-            "id": 1,
-            "name": "iphone",
-            "price": 1200,
-            "status": true
-        },
-        {
-            "id": 1,
-            "name": "samsung",
-            "price": 1200,
-            "status": false
-        },
-        {
-            "id": 1,
-            "name": "opppo",
-            "price": 1200,
-            "status": true
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "iphone",
+      "price": 1200,
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "samsung",
+      "price": 1200,
+      "status": false
+    },
+    {
+      "id": 3,
+      "name": "opppo",
+      "price": 1200,
+      "status": true
+    },
+    {
+      "name": "asgew",
+      "price": "1242134",
+      "status": true,
+      "id": 4
+    },
+    {
+      "id": 5,
+      "name": "hqaw4",
+      "price": "235",
+      "status": true
+    },
+    {
+      "name": "trung",
+      "price": "34",
+      "status": true,
+      "id": 6
+    }
+  ]
 }
