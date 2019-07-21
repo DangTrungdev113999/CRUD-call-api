@@ -1,28 +1,29 @@
 import * as Types from './../constants/ActionTypes';
 
-const initialState = [
-    {
-        id: 1,
-        name: 'iphone',
-        price: 1200,
-        status: true
-    },
-    {
-        id: 1,
-        name: 'samsung',
-        price: 1200,
-        status: false
-    },
-    {
-        id: 1,
-        name: 'opppo',
-        price: 1200,
-        status: true
-    }
-]
+const initialState = []
+
+const findIndex = (products, id) => {
+    let result = -1;
+    products.forEach((product, index) => {
+        if(product.id === id) {
+            result = index;
+        }
+    });
+    return result;
+}
 
 const myReducer = (state = initialState, action) => {
+    let index = -1;
     switch(action.type) {
+        case Types.FETCH_PRODUCTS: 
+            state = action.products;
+            return [...state];
+        case Types.DELETE_PRODUCT:
+            index = findIndex(state, action.id);
+            if(index !== -1) {
+                state.splice(index, 1);
+            }
+            return [...state];
         default: return [...state]
     }
 }

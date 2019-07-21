@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Products extends Component {
 
@@ -24,12 +25,12 @@ class Products extends Component {
                     </span>
                 </td>
                 <td>
-                    <button
-                        type="button"
+                    <Link
+                        to={`/product/${product.id}/edit`}
                         className="btn btn-warning"
                     >
                         Update
-                    </button>
+                    </Link>
                     <button
                         type="button"
                         className="btn btn-danger ml-15"

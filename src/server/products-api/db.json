@@ -23,18 +23,6 @@
       "price": "1242134",
       "status": true,
       "id": 4
-    },
-    {
-      "id": 5,
-      "name": "hqaw4",
-      "price": "235",
-      "status": true
-    },
-    {
-      "name": "trung",
-      "price": "34",
-      "status": true,
-      "id": 6
     }
   ]
 }

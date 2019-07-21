@@ -9,9 +9,28 @@ class productListPage extends Component {
             id: '',
             txtName: '',
             txtPrice: '',
-            ckhbStatus: false
+            chkbStatus: false
         }
     }
+
+    componentDidMount() {
+        const { match } = this.props;
+        if(match) {
+            const id = match.params.id;
+            callApi(`products/${id}`, 'GET', null).then(res => {
+                const data = res.data;
+                this.setState({
+                    id: data.id,
+                    txtName: data.name,
+                    txtPrice: data.price,
+                    chkbStatus: data.status
+                })
+            })
+        }
+        
+    }
+
+
 
     onGetValue = e => {
         const target = e.target;
@@ -25,20 +44,32 @@ class productListPage extends Component {
 
     onSaveValue = e => {
         e.preventDefault();
-        const { txtName, txtPrice, ckhbStatus } = this.state;
+        const { txtName, txtPrice, chkbStatus, id } = this.state;
         const { history } = this.props;
-        callApi('products', 'POST', {
-            name: txtName,
-            price: txtPrice,
-            status: ckhbStatus
-        }).then(res => {
-            history.goBack();
-        })
+        if(id) {
+            callApi(`products/${id}`, 'PUT', {
+                id,
+                name: txtName,
+                price: txtPrice,
+                status: chkbStatus
+            }).then(res => {
+                history.goBack();
+            })
+        }else {
+            callApi('products', 'POST', {
+                name: txtName,
+                price: txtPrice,
+                status: chkbStatus
+            }).then(res => {
+                history.goBack();
+            })
+        }
+
     }
 
     render() {
 
-        const { txtName, txtPrice, ckhbStatus } = this.state;
+        const { txtName, txtPrice, chkbStatus } = this.state;
         return (
             <div className="container">
                 <div className="row">
@@ -78,9 +109,10 @@ class productListPage extends Component {
                                         <label>
                                             <input
                                                 type="checkbox"
-                                                name="ckhbStatus"
-                                                value={ckhbStatus}
+                                                name="chkbStatus"
+                                                value={chkbStatus}
                                                 onChange={this.onGetValue}
+                                                checked={chkbStatus}
                                             />
                                             stocking
                                         </label>
