@@ -9,6 +9,9 @@ class Products extends Component {
             this.props.onDeleteProduct(id);
         }
     }
+    onGetProductEditting = product => {
+        console.log(product)
+    }
 
     render() {
         const { product, index } = this.props;

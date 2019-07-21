@@ -30,3 +30,18 @@ export const actDeleteProduct = id => {
         id
     }
 }
+
+export const actSaveProductRequest = product => {
+    return dispatch => {
+        return callApi(`products`, 'POST', product).then(res => {
+            dispatch(actSaveProduct(res.data));
+        })
+    }
+}
+
+export const actSaveProduct = product => {
+    return {
+        type: Types.SAVE_PRODUCT,
+        product
+    }
+}

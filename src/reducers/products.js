@@ -24,6 +24,9 @@ const myReducer = (state = initialState, action) => {
                 state.splice(index, 1);
             }
             return [...state];
+        case Types.SAVE_PRODUCT:
+            state.push(action.product);
+            return [...state]
         default: return [...state]
     }
 }
