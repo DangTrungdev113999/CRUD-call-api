@@ -2,15 +2,15 @@
   "products": [
     {
       "id": 1,
-      "name": "iphone",
+      "name": "iphone ",
       "price": 1200,
       "status": true
     },
     {
       "id": 2,
-      "name": "samsung",
+      "name": "samsung ",
       "price": 1200,
-      "status": false
+      "status": true
     },
     {
       "id": 3,

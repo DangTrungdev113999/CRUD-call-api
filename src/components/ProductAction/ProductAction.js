@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import callApi from './../../utils/apiCaller';
 import { Link } from 'react-router-dom';
 
 class productAction extends Component {
@@ -15,22 +14,23 @@ class productAction extends Component {
 
     componentDidMount() {
         const { match } = this.props;
-        if(match) {
+        if (match) {
             const id = match.params.id;
-            callApi(`products/${id}`, 'GET', null).then(res => {
-                const data = res.data;
-                this.setState({
-                    id: data.id,
-                    txtName: data.name,
-                    txtPrice: data.price,
-                    chkbStatus: data.status
-                })
-            })
+            this.props.onEditProduct(id);
         }
-        
     }
 
-
+    componentWillReceiveProps(nextProps) {
+        if (nextProps && nextProps.editProduct) {
+            const { editProduct } = nextProps;
+            this.setState({
+                id: editProduct.id,
+                txtName: editProduct.name,
+                txtPrice: editProduct.price,
+                chkbStatus: editProduct.status
+            })
+        }
+    }
 
     onGetValue = e => {
         const target = e.target;
@@ -55,7 +55,6 @@ class productAction extends Component {
     }
 
     render() {
-
         const { txtName, txtPrice, chkbStatus } = this.state;
         return (
             <div className="container">

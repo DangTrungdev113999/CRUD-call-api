@@ -26,7 +26,11 @@ const myReducer = (state = initialState, action) => {
             return [...state];
         case Types.SAVE_PRODUCT:
             state.push(action.product);
-            return [...state]
+            return [...state];
+        case Types.UPDATE_PRODUCT:
+            index = findIndex(state, action.product.id);
+            state[index] = action.product;
+            return [...state];
         default: return [...state]
     }
 }

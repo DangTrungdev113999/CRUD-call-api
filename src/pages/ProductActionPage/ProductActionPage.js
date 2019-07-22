@@ -6,38 +6,28 @@ import * as actions from './../../actions/index';
 class productActionPage extends Component {
 
     onSaveValue = product => {
-        // const { txtName, txtPrice, chkbStatus, id } = this.state;
-        // const { history } = this.props;
-        // if (id) {
-        //     callApi(`products/${id}`, 'PUT', {
-        //         id,
-        //         name: txtName,
-        //         price: txtPrice,
-        //         status: chkbStatus
-        //     }).then(res => {
-        //         history.goBack();
-        //     })
-        // } else {
-        //     callApi('products', 'POST', {
-        //         name: txtName,
-        //         price: txtPrice,
-        //         status: chkbStatus
-        //     }).then(res => {
-        //         history.goBack();
-        //     })
-        // }
-
+        const {  id } = product;
         const { history } = this.props;
-        this.props.onSaveValue(product);
+        if (id) {
+            this.props.onUpdateproduct(product);
+        } else {
+            this.props.onSaveValue(product);
+        }
         history.goBack();
+    }
 
+    onEditProduct = id => {
+        this.props.onEditProduct(id);
     }
 
     render() {
-        const { onSaveValue } = this.onSaveValue
+        const { match, editProduct } = this.props;
         return (
             <ProductAction
-                onSaveValue={ this.onSaveValue }
+                onSaveValue={this.onSaveValue}
+                onEditProduct={this.onEditProduct}
+                match = {match}
+                editProduct = { editProduct }
             />
         );
     }
@@ -45,7 +35,7 @@ class productActionPage extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        editProduct: state.productEditting
     }
 }
 
@@ -53,6 +43,12 @@ const mapDisPatchToProps = (dispatch, props) => {
     return {
         onSaveValue: product => {
             dispatch(actions.actSaveProductRequest(product));
+        },
+        onEditProduct: id => {
+            dispatch(actions.actEditProductResquest(id));
+        },
+        onUpdateproduct: product => {
+            dispatch(actions.actUpdateProductRequest(product));
         }
     }
 }

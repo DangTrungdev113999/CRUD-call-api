@@ -45,3 +45,34 @@ export const actSaveProduct = product => {
         product
     }
 }
+
+export const actEditProductResquest = id => {
+    return dispatch => {
+        return callApi(`products/${id}`, 'GET', null).then(res => {
+            dispatch(actEditProduct(res.data))
+        })
+    }
+}
+
+export const actEditProduct = product => {
+    return {
+        type: Types.EDIT_PRODUCT,
+        product
+    }
+}
+
+export const actUpdateProductRequest = product => {
+    return dispatch => {
+        return callApi(`products/${product.id}`, 'PUT', product).then( res => {
+            console.log(res.data);
+            dispatch(actUpdateProduct(res.data));
+        })
+    }
+}
+
+export const actUpdateProduct = product => {
+    return {
+        type: Types.UPDATE_PRODUCT,
+        product
+    }
+}
